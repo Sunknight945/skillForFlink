@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.uiys.skillforflink.level3.clickData.OneTypeCkEntityMapper">
+    <!-- ==================== 查询 ==================== -->
+
+    <!-- 批量查询已存在的MD5 -->
+    <select id="selectExistMd5s" resultType="string">
+        SELECT md5
+        FROM busOne.one_type_ck_entity
+        WHERE md5 IN
+        <foreach collection="md5List" item="md5" open="(" separator="," close=")">
+            #{md5}
+        </foreach>
+    </select>
+
+
+    <!-- 批量插入 -->
+    <insert id="batchInsert">
+        INSERT INTO busOne.one_type_ck_entity
+        (source_file_name, field_one, field_two, field_three, md5, ck_input_time)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (
+            #{item.sourceFileName},
+            #{item.fieldOne},
+            #{item.fieldTwo},
+            #{item.fieldThree},
+            #{item.md5},
+            #{item.ckInputTime}
+            )
+        </foreach>
+    </insert>
+</mapper>

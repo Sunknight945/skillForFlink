@@ -35,9 +35,9 @@ public class Kafka2ClickHouseDelete {
         // 在 main 方法开头
         Configuration conf = new Configuration();
 // 明确指定 Web UI 端口
-        conf.setInteger(RestOptions.PORT, 8081);
+        conf.setInteger(RestOptions.PORT, 8082);
 // 可选：增加连接超时时间（毫秒）
-        conf.setString(RestOptions.BIND_PORT, "8081");
+        conf.setString(RestOptions.BIND_PORT, "8082");
 // 创建环境
         StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironmentWithWebUI(conf);
 
@@ -77,6 +77,7 @@ public class Kafka2ClickHouseDelete {
                 new NullSafeStringSchema(),
                 kafkaProps
         );
+        consumer.setCommitOffsetsOnCheckpoints(true); // ← 新增
         consumer.setStartFromLatest();
 
         DataStream<String> rawStream = env.addSource(consumer)
@@ -99,6 +100,7 @@ public class Kafka2ClickHouseDelete {
                             System.err.println("Parse error for message: " + jsonStr);
                             e.printStackTrace();
                         }
+//                        return jsonStr;
                     }
                 });
 

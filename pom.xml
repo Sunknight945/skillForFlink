@@ -33,7 +33,6 @@
     <dependencies>
 
 
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -72,14 +71,14 @@
             <groupId>com.clickhouse</groupId>
             <artifactId>clickhouse-jdbc</artifactId>
             <version>0.4.6</version>
-<!--            <version>0.7.3</version>-->
+            <!--            <version>0.7.3</version>-->
         </dependency>
 
-        <dependency>
+        <!--<dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.36</version>
-        </dependency>
+        </dependency>-->
 
 
         <!-- JDBC 连接器（用于写入 ClickHouse） -->
@@ -87,9 +86,8 @@
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-connector-jdbc</artifactId>
             <version>3.1.0-1.17</version> <!-- 与 Flink 1.19 兼容 -->
-<!--            <version>3.1.2-1.19</version>-->
+            <!--            <version>3.1.2-1.19</version>-->
         </dependency>
-
 
 
         <dependency>
@@ -130,6 +128,39 @@
             <artifactId>flink-runtime-web</artifactId>
             <version>${flink.version}</version>
         </dependency>
+
+
+        <!-- dynamic-datasource 多数据源 -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+            <version>4.2.0</version>
+        </dependency>
+
+        <!-- ClickHouse 驱动 -->
+        <!--<dependency>
+            <groupId>ru.yandex.clickhouse</groupId>
+            <artifactId>clickhouse-jdbc</artifactId>
+            <version>0.3.2</version>
+        </dependency>-->
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.47</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.5.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
